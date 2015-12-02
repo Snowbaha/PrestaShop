@@ -175,7 +175,9 @@ function ProductTabsManager(){
 				if ((in_array(status, wrong_statuses) || in_array(request.status, wrong_status_code)) && !self.page_reloading) {
 					var current_tab = '';
 					if (request.responseText !== 'undefined' && request.responseText && request.responseText.length) {
+						if( $(request.responseText).filter('.product-tab').attr('id') ){
 						current_tab = $(request.responseText).filter('.product-tab').attr('id').replace('product-', '');
+						}
 					}
 
 					jAlert((current_tab ? 'Tab : ' + current_tab : '') + ' (' + (request.status ? request.status + ' ' : '' ) + request.statusText + ')\n' + reload_tab_description, reload_tab_title);
